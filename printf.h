@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dierojas <dierojas@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:31:03 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/10 21:24:41 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:46:20 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdarg.h>
 
 size_t	ft_strlen(const char *str);
 void	ft_putchar_fd(char c, int fd);
