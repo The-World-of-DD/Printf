@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:31:03 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/11 14:46:20 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/25 22:21:34 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ size_t	ft_strlen(const char *str);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
-int		ft_printf(char const *, ...);
+//int		ft_printf(char const *, ...);
+int		ft_printf(char const *s);
 
 #endif
