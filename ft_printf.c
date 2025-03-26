@@ -6,41 +6,49 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/25 23:57:51 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/26 20:04:17 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-//int	ft_printf(char const *, ...)
-int	ft_printf(char const *s)
+int	ft_printf(char const *s, ...)
 {
 	size_t	i;
-	//char	*s;//una cosa es lo que ttiene el % y la otra es el sting que le pasamos¿?
+	va_list	args;
 
+	va_start(args, s);
 	i = 0;
-	while (s)
+	while (s[i])
 	{
 		if (s[i] == '%')//aqui identificamos el % antes del identificador
 		{
-			i++;//avanza 1 y siempre lo tiene que hacer
-			if (s[i] == 'c')
-				ft_putchar_fd(s[i], 1);
-			if (s[i] == '%')
+			i++;
+			if (s[i] == 'c')//caracter
+			{
+				char c = va_arg(args, int);
+				ft_putchar_fd(c, 1);
+			}
+			else if (s[i] == '%')//caracter
 				ft_putchar_fd('%', 1);
-			else if (s[i] == 's')
-				ft_putstr_fd(s, 1);
-			else if (s[i] == 'i')
+			else if (s[i] == 's')//esto es un string
+			{
+				char *str = va_arg(args, char*);
+				ft_putstr_fd(str, 1);
+			}
+			else if (s[i] == 'i')//esto es un int
+			{
+				int n = va_arg(args, int);
 				ft_putnbr_fd(s[i], 1);
+			}
 			else
 				ft_putstr_fd("(nill)", 1);
 		}
 		else 
-		{
-			ft_putstr_fd(s[i], 1);
-		}
+			ft_putchar_fd(s[i], 1);
 		i++;
 	}
+	va_end(args);
 	return (0);
 }
 
@@ -52,7 +60,7 @@ int	main()
 	printf("PROBANDO PORCENTAJE %%\n");
 	printf("PROBANDO ENTERO -> %i\n  %i\n", 5678, -5678);
 
-	ft_printf("Hola Mundo");
+	ft_printf("Hola Mundo\n -- %c -- %% -- %s -- %i\n", 'c', "Mis muertos", 234564);
 
 	/*
 	printf("PROBANDO VOID -> %p\n", (void *)"holo");

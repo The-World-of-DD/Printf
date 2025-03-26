@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:37:10 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/26 00:00:24 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/26 19:43:48 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ void	ft_putstr_fd(char *s, int fd)
 	while (s[i])
 	{
 		write (fd, &s[i], 1);
-		i++;
+		s++;
 	}
 }
