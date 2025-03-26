@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/26 20:04:17 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/26 21:56:33 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_printf(char const *s, ...)
 			else if (s[i] == 'i')//esto es un int
 			{
 				int n = va_arg(args, int);
-				ft_putnbr_fd(s[i], 1);
+				ft_putnbr_fd(n, 1);
 			}
 			else
 				ft_putstr_fd("(nill)", 1);
