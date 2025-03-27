@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 10:51:27 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 11:14:56 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:11:11 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_put_unsnbr_fd(unsigned int n, int fd);
-void	ft_put_hexdec(unsigned long long nb, int fd);
+void	ft_put_hexdec(unsigned long long nb, int m,int fd);
 int		ft_printf(char const *s, ...);
 
 #endif

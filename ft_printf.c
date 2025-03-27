@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 12:09:22 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:13:53 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	ft_printf(char const *s, ...)
 			else if (s[i] == 'x' || s[i] == 'X' || s[i] == 'p')
 			{
 				lnb = va_arg(args, unsigned long long);
-				ft_put_hexdec(lnb, 1);
+				ft_put_hexdec(lnb, 10, 1);
 			}
 			else
 				ft_putstr_fd("(nill)", 1);
@@ -86,8 +86,8 @@ int main()
     printf("Hexadecimal mayúsculas: %X\n", numero_unsigned);  // FF
     printf("Porcentaje: %% -- OK\n");  // %
 
-	ft_printf("Hola Mundo\n%c -- %% -- %s -- %d\n --", 'c', "Mis muertos", 234564);
+	ft_printf("Hola Mundo\n%c -- %% -- %s -- %d --", 'c', "Mis muertos", 234564);
 
     return 0;
-} 
+}
  */
