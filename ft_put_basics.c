@@ -6,11 +6,11 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:37:10 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 09:35:45 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:01:52 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 void	ft_putchar_fd(char c, int fd)
 {
@@ -48,10 +48,21 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-
-void	ft_put_unsnbr_fd(int n, int fd)
+void	ft_put_unsnbr_fd(unsigned int n, int fd)
 {
 	if (n >= 10)
 		ft_putnbr_fd ((n / 10), fd);
 	ft_putchar_fd((n % 10) + '0', fd);
 }
+/* void	ft_put_hexdec(unsigned long long nb, int fd)
+{
+	char	minh;
+	char	maxh;
+	int		result;
+
+	minh = "0123456789abcdef"[nb/10];//aqui indicamos la posicion dentro del caracter
+	maxh = "0123456789ABCDEF"[nb%10];
+	if ()
+	return (result);
+}
+ */

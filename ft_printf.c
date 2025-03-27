@@ -6,11 +6,11 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 09:41:11 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:48:05 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_printf(char const *s, ...)
 {
@@ -40,7 +40,7 @@ int	ft_printf(char const *s, ...)
 				str = va_arg(args, char*);
 				ft_putstr_fd(str, 1);
 			}
-			else if (s[i] == 'd')//esto es un numero en base decimal
+			else if (s[i] == 'd' || s[i] == 'i')//esto es un numero en base decimal
 			{
 				n = va_arg(args, int);
 				ft_putnbr_fd(n, 1);

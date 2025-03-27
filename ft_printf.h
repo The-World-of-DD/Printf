@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 20:31:03 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 09:33:41 by dierojas         ###   ########.fr       */
+/*   Created: 2025/03/27 10:51:27 by dierojas          #+#    #+#             */
+/*   Updated: 2025/03/27 10:57:44 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
 
-size_t	ft_strlen(const char *str);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
-void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 void	ft_put_unsnbr_fd(int n, int fd);
+void	ft_put_hexdec(unsigned long long nb, int fd);
 int		ft_printf(char const *s, ...);
 
 #endif
