@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 11:35:23 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:09:22 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_printf(char const *s, ...)
 	va_end(args);
 	return (0);
 }
-
+/* 
 #include <stdio.h>
 
 int main() 
@@ -90,3 +90,4 @@ int main()
 
     return 0;
 } 
+ */
