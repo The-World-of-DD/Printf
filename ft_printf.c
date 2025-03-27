@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 15:53:17 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 21:22:53 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_printf(char const *s, ...)
 	str = "";
 	c = 'c';
 	np = 0;
-	lnb= 0;
+	lnb = 0;
 	char_count = 0;
 	while (s[i])
 	{
@@ -61,18 +61,24 @@ int	ft_printf(char const *s, ...)
 			else if (s[i] == 'p')
 			{
 				lnb = va_arg(args, unsigned long long);
-				char_count += ft_putstr("0x");
-				char_count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
+				if (!lnb)
+					char_count += ft_putstr("(nil)");
+				else
+				{
+					char_count += ft_putstr("0x");
+					char_count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
+				}
+				
 			}
 			else if (s[i] == 'x')
 			{
 				lnb = va_arg(args, unsigned int);
-				char_count += ft_put_hexdec(np, 0);//tengo que modificar este valor
+				char_count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
 			}
 			else if (s[i] == 'X')
 			{
 				lnb = va_arg(args, unsigned int);
-				char_count += ft_put_hexdec(np, 1);//tengo que modificar este valor
+				char_count += ft_put_hexdec(lnb, 1);//tengo que modificar este valor
 			}
 			else
 				char_count += ft_putstr("(null)");
