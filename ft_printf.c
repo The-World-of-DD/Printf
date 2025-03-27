@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 11:48:05 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:15:44 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_printf(char const *s, ...)
 	return (0);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
 int main() 
 {
@@ -83,4 +83,4 @@ int main()
 	ft_printf("Hola Mundo\n%c -- %% -- %s -- %d\n", 'c', "Mis muertos", 234564);
 
     return 0;
-}
+} */
