@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 13:44:38 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:12:20 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,15 @@ int	ft_printf(char const *s, ...)
 				np = va_arg(args, unsigned int);
 				char_count += ft_put_unsnbr(np);
 			}
-			else if (s[i] == 'x' || s[i] == 'X')
+			else if (s[i] == 'x')
 			{
 				lnb = va_arg(args, unsigned long long);
-				char_count += ft_put_hexdec(lnb, 16);//tengo que modificar este valor
+				char_count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
+			}
+			else if (s[i] == 'X')
+			{
+				lnb = va_arg(args, unsigned long long);
+				char_count += ft_put_hexdec(lnb, 1);//tengo que modificar este valor
 			}
 			else if (s[i] == 'p')
 			{
@@ -74,7 +79,7 @@ int	ft_printf(char const *s, ...)
 	va_end(args);
 	return (char_count);
 }
-/* 
+ 
 #include <stdio.h>
 
 int main() 
@@ -98,4 +103,3 @@ int main()
 
     return 0;
 }
- */
