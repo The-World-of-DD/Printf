@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:37:10 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/26 23:22:02 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 09:35:45 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ void	ft_putnbr_fd(int n, int fd)
 	ft_putchar_fd((n % 10) + '0', fd);
 }
 
-void	ft_put_unsnbr_fd(int n, int fd)
-{
-	if (n >= 10)
-		ft_putnbr_fd ((n / 10), fd);
-	ft_putchar_fd((n % 10) + '0', fd);
-}
-
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
@@ -53,4 +46,12 @@ void	ft_putstr_fd(char *s, int fd)
 		write (fd, &s[i], 1);
 		s++;
 	}
+}
+
+
+void	ft_put_unsnbr_fd(int n, int fd)
+{
+	if (n >= 10)
+		ft_putnbr_fd ((n / 10), fd);
+	ft_putchar_fd((n % 10) + '0', fd);
 }
