@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 15:28:37 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:46:43 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_printf(char const *s, ...)
 {
-	size_t			i;
 	va_list			args;
+	size_t			i;
 	int				n;
 	char			*str;
 	char			c;
@@ -58,6 +58,14 @@ int	ft_printf(char const *s, ...)
 				np = va_arg(args, unsigned int);
 				char_count += ft_put_unsnbr(np);
 			}
+			else if (s[i] == 'p')
+			{
+				if (!s[i])
+					return (char_count = ft_putstr("nil"));
+				lnb = va_arg(args, unsigned long long);
+				char_count += ft_putstr("0x");
+				char_count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
+			}
 			else if (s[i] == 'x')
 			{
 				lnb = va_arg(args, unsigned int);
@@ -67,12 +75,6 @@ int	ft_printf(char const *s, ...)
 			{
 				lnb = va_arg(args, unsigned int);
 				char_count += ft_put_hexdec(np, 1);//tengo que modificar este valor
-			}
-			else if (s[i] == 'p')
-			{
-				lnb = va_arg(args, unsigned long long);
-				char_count += ft_putstr("0x");
-				char_count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
 			}
 			else
 				char_count += ft_putstr("(nill)");
