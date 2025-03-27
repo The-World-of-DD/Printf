@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 11:15:44 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:35:23 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	ft_printf(char const *s, ...)
 	int				n;
 	char			*str;
 	char			c;
-	unsigned int	np;	
+	unsigned int	np;
+	unsigned long long	lnb;
 
 	va_start(args, s);
 	i = 0;
@@ -50,6 +51,11 @@ int	ft_printf(char const *s, ...)
 				np = va_arg(args, unsigned int);
 				ft_put_unsnbr_fd(np, 1);
 			}
+			else if (s[i] == 'x' || s[i] == 'X' || s[i] == 'p')
+			{
+				lnb = va_arg(args, unsigned long long);
+				ft_put_hexdec(lnb, 1);
+			}
 			else
 				ft_putstr_fd("(nill)", 1);
 		}
@@ -61,7 +67,7 @@ int	ft_printf(char const *s, ...)
 	return (0);
 }
 
-/* #include <stdio.h>
+#include <stdio.h>
 
 int main() 
 {
@@ -80,7 +86,7 @@ int main()
     printf("Hexadecimal mayúsculas: %X\n", numero_unsigned);  // FF
     printf("Porcentaje: %% -- OK\n");  // %
 
-	ft_printf("Hola Mundo\n%c -- %% -- %s -- %d\n", 'c', "Mis muertos", 234564);
+	ft_printf("Hola Mundo\n%c -- %% -- %s -- %d\n --", 'c', "Mis muertos", 234564);
 
     return 0;
-} */
+} 

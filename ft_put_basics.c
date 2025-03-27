@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:37:10 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 11:06:37 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:31:24 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,19 @@ void	ft_put_unsnbr_fd(unsigned int n, int fd)
 		ft_putnbr_fd ((n / 10), fd);
 	ft_putchar_fd((n % 10) + '0', fd);
 }
-/* void	ft_put_hexdec(unsigned long long nb, int fd)
+void	ft_put_hexdec(unsigned long long nb, int m, int fd)
 {
 	char	minh;
 	char	maxh;
 	int		result;
 
-	minh = "0123456789abcdef"[nb/10];//aqui indicamos la posicion dentro del caracter
-	maxh = "0123456789ABCDEF"[nb%10];
-	if ()
-	return (result);
+	result = 0;
+	minh = "0123456789abcdef"[nb%16];//aqui indicamos la posicion dentro del caracter
+	maxh = "0123456789ABCDEF"[nb%16];
+	if (nb >= 16)
+		ft_put_hexdec(nb/16, m, fd);
+	if (!m)
+		ft_putchar_fd(minh, fd);
+	else
+		ft_putchar_fd(maxh, fd);
 }
- */
