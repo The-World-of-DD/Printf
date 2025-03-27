@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/26 21:56:33 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 00:15:02 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 int	ft_printf(char const *s, ...)
 {
-	size_t	i;
-	va_list	args;
+	size_t			i;
+	va_list			args;
+	int				n;
+	char			*str;
+	char			c;
+	unsigned int	np;	
 
 	va_start(args, s);
 	i = 0;
@@ -26,20 +30,25 @@ int	ft_printf(char const *s, ...)
 			i++;
 			if (s[i] == 'c')//caracter
 			{
-				char c = va_arg(args, int);
+				c = va_arg(args, int);
 				ft_putchar_fd(c, 1);
 			}
-			else if (s[i] == '%')//caracter
+			else if (s[i] == '%')//caracter %
 				ft_putchar_fd('%', 1);
 			else if (s[i] == 's')//esto es un string
 			{
-				char *str = va_arg(args, char*);
+				str = va_arg(args, char*);
 				ft_putstr_fd(str, 1);
 			}
-			else if (s[i] == 'i')//esto es un int
+			else if (s[i] == 'd')//esto es un numero en base decimal
 			{
-				int n = va_arg(args, int);
+				n = va_arg(args, int);
 				ft_putnbr_fd(n, 1);
+			}
+			else if (s[i] == 'u')
+			{
+				np = va_arg(args, unsigned int);
+				ft_put_unsnbr_fd(np, 1);
 			}
 			else
 				ft_putstr_fd("(nill)", 1);
@@ -53,22 +62,25 @@ int	ft_printf(char const *s, ...)
 }
 
 #include <stdio.h>
-int	main()
+
+int main() 
 {
-    printf("PROBANDO CARÁCTER -> %c\n", 'c');
-	printf("PROBANDO STRING -> %s\n", "sherlocked");
-	printf("PROBANDO PORCENTAJE %%\n");
-	printf("PROBANDO ENTERO -> %i\n  %i\n", 5678, -5678);
+    int numero = -255;
+    unsigned int numero_unsigned = 255;
+    char letra = 'A';
+    char saludo[] = "Hola Mundo";
+    void *direccion = &numero;
 
-	ft_printf("Hola Mundo\n -- %c -- %% -- %s -- %i\n", 'c', "Mis muertos", 234564);
+    printf("Número con signo: %d -- OK\n", numero);  // -255
+    printf("Número unsigned: %u -- OK\n", numero_unsigned);  // 255
+    printf("Carácter: %c -- OK\n", letra);  // A
+    printf("Cadena: %s -- OK\n", saludo);  // Hola Mundo
+    printf("Dirección de memoria: %p\n", direccion);  // Dirección de memoria
+    printf("Hexadecimal minúsculas: %x\n", numero_unsigned);  // ff
+    printf("Hexadecimal mayúsculas: %X\n", numero_unsigned);  // FF
+    printf("Porcentaje: %% -- OK\n");  // %
 
-	/*
-	printf("PROBANDO VOID -> %p\n", (void *)"holo");
-	printf("PROBANDO DECIMAL -> %d\n", 123345);
-    printf("PROBANDO NUMERO DECIMAL UNSIGNED %u\n", -2345);
-    printf("PROBANDO HEX MIN %x\n", 2345);
-    printf("PROBANDO HEX MAY %X\n", 2345);
-    */
+	ft_printf("Hola Mundo\n%c -- %% -- %s -- %d\n", 'c', "Mis muertos", 234564);
 
     return 0;
 }
