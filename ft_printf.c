@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 15:23:52 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:28:37 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ int	ft_printf(char const *s, ...)
 
 	va_start(args, s);
 	i = 0;
+	n = 0;
+	str = "";
+	c = 'c';
+	np = 0;
+	lnb= 0;
 	char_count = 0;
 	while (s[i])
 	{
