@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:37:10 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 12:15:26 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:15:58 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	ft_put_hexdec(unsigned long long nb, int m, int fd)
 	char	minh;
 	char	maxh;
 
-	result = 0;
 	minh = "0123456789abcdef"[nb%16];//aqui indicamos la posicion dentro del caracter
 	maxh = "0123456789ABCDEF"[nb%16];
 	if (nb >= 16)
