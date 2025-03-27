@@ -6,65 +6,75 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:37:10 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 12:15:58 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:04:58 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar(char c)
 {
-	write (fd, &c, 1);
+	return (write (1, &c, 1));
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr(int n)
 {
+	int	count;
+	
+	count = 0;
 	if (n == -2147483648)
-	{
-		write (fd, "-2147483648", 11);
-		return ;
-	}
+		return (write (1, "-2147483648", 11));
 	if (n < 0)
 	{
 		n = -n;
-		ft_putchar_fd('-', fd);
+		ft_putchar('-');
+		count++;
 	}
 	if (n >= 10)
-		ft_putnbr_fd ((n / 10), fd);
-	ft_putchar_fd((n % 10) + '0', fd);
+		count += ft_putnbr((n / 10));
+	count += ft_putchar((n % 10) + '0');
+	return (count);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr(char *s)
 {
-	int	i;
+	int	count;
 
 	if (!s)
-		return ;
-	i = 0;
-	while (s[i])
+		return (0);
+	count = 0;
+	while (s[count])
 	{
-		write (fd, &s[i], 1);
-		s++;
+		ft_putchar(s[count]);
+		count++;
 	}
+	return (count);
 }
 
-void	ft_put_unsnbr_fd(unsigned int n, int fd)
+int	ft_put_unsnbr(unsigned int n)
 {
+	int	count;
+
+	count = 0;
 	if (n >= 10)
-		ft_putnbr_fd ((n / 10), fd);
-	ft_putchar_fd((n % 10) + '0', fd);
+		count += ft_put_unsnbr((n / 10));
+	count += ft_putchar((n % 10) + '0');
+	return (count);
 }
-void	ft_put_hexdec(unsigned long long nb, int m, int fd)
+int	ft_put_hexdec(unsigned long long nb, int m)
 {
 	char	minh;
 	char	maxh;
+	int		count;
 
 	minh = "0123456789abcdef"[nb%16];//aqui indicamos la posicion dentro del caracter
 	maxh = "0123456789ABCDEF"[nb%16];
+	count = 0;
 	if (nb >= 16)
-		ft_put_hexdec(nb/16, m, fd);
+		count += ft_put_hexdec(nb/16, m);
 	if (!m)
-		ft_putchar_fd(minh, fd);
+		count += ft_putchar(minh);
 	else
-		ft_putchar_fd(maxh, fd);
+		count += ft_putchar(maxh);
+	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 12:13:53 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:07:28 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ int	ft_printf(char const *s, ...)
 	char			c;
 	unsigned int	np;
 	unsigned long long	lnb;
+	int	char_count;
 
 	va_start(args, s);
 	i = 0;
+	char_count = 0;
 	while (s[i])
 	{
 		if (s[i] == '%')//aqui identificamos el % antes del identificador
@@ -32,41 +34,41 @@ int	ft_printf(char const *s, ...)
 			if (s[i] == 'c')//caracter
 			{
 				c = va_arg(args, int);
-				ft_putchar_fd(c, 1);
+				char_count += ft_putchar(c);
 			}
 			else if (s[i] == '%')//caracter %
-				ft_putchar_fd('%', 1);
+				char_count += ft_putchar('%');
 			else if (s[i] == 's')//esto es un string
 			{
-				str = va_arg(args, char*);
-				ft_putstr_fd(str, 1);
+				str = va_arg(args, char *);
+				char_count += ft_putstr(str);
 			}
 			else if (s[i] == 'd' || s[i] == 'i')//esto es un numero en base decimal
 			{
 				n = va_arg(args, int);
-				ft_putnbr_fd(n, 1);
+				char_count += ft_putnbr(n);
 			}
 			else if (s[i] == 'u')
 			{
 				np = va_arg(args, unsigned int);
-				ft_put_unsnbr_fd(np, 1);
+				char_count += ft_put_unsnbr(np);
 			}
-			else if (s[i] == 'x' || s[i] == 'X' || s[i] == 'p')
+/* 			else if (s[i] == 'x' || s[i] == 'X' || s[i] == 'p')
 			{
 				lnb = va_arg(args, unsigned long long);
-				ft_put_hexdec(lnb, 10, 1);
-			}
+				ft_put_hexdec(lnb, 10);//tengo que modificar este valor
+			} */
 			else
-				ft_putstr_fd("(nill)", 1);
+				char_count += ft_putstr("(nill)");
 		}
 		else 
-			ft_putchar_fd(s[i], 1);
+			char_count += ft_putchar(s[i]);
 		i++;
 	}
 	va_end(args);
-	return (0);
+	return (char_count);
 }
-/* 
+
 #include <stdio.h>
 
 int main() 
@@ -90,4 +92,3 @@ int main()
 
     return 0;
 }
- */
