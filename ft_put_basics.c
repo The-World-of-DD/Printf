@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:37:10 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 13:04:58 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:20:16 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_putstr(char *s)
 	int	count;
 
 	if (!s)
-		return (0);
+		return (ft_putstr("(null)"));
 	count = 0;
 	while (s[count])
 	{
