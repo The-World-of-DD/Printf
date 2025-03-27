@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 15:46:43 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/27 15:48:10 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_printf(char const *s, ...)
 			}
 			else if (s[i] == 'p')
 			{
-				if (!s[i])
+				if (!s)
 					return (char_count = ft_putstr("nil"));
 				lnb = va_arg(args, unsigned long long);
 				char_count += ft_putstr("0x");
