@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 21:25:56 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/28 09:15:56 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/28 09:31:08 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ int	ft_hexdec_aux(char const *s, va_list args)
 	if (s[i] == 'x')
 	{
 		lnb = va_arg(args, unsigned int);
-		count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
+		count += ft_put_hexdec(lnb, 0);
 	}
 	else if (s[i] == 'X')
 	{
 		lnb = va_arg(args, unsigned int);
-		count += ft_put_hexdec(lnb, 1);//tengo que modificar este valor
+		count += ft_put_hexdec(lnb, 1);
 	}
 	return (count);
 }
@@ -37,7 +37,7 @@ int	ft_pointer_aux(va_list args)
 {
 	unsigned long long	lnb;
 	int					count;
-	
+
 	count = 0;
 	lnb = va_arg(args, unsigned long long);
 	if (!lnb)
@@ -45,7 +45,7 @@ int	ft_pointer_aux(va_list args)
 	else
 	{
 		count += ft_putstr("0x");
-		count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
+		count += ft_put_hexdec(lnb, 0);
 	}
 	return (count);
 }
@@ -67,12 +67,12 @@ int	ft_putnbr_aux(char const *s, va_list args)
 	int					count;
 	int					n;
 	unsigned int		np;
-	
+
 	i = 0;
 	count = 0;
 	n = 0;
 	np = 0;
-	if (s[i] == 'd' || s[i] == 'i')//esto es un numero en base decimal
+	if (s[i] == 'd' || s[i] == 'i')
 	{
 		n = va_arg(args, int);
 		count += ft_putnbr(n);

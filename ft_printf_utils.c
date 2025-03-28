@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_basics.c                                    :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 20:37:10 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 15:20:16 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/28 09:31:48 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_putchar(char c)
 int	ft_putnbr(int n)
 {
 	int	count;
-	
+
 	count = 0;
 	if (n == -2147483648)
 		return (write (1, "-2147483648", 11));
@@ -61,17 +61,18 @@ int	ft_put_unsnbr(unsigned int n)
 	count += ft_putchar((n % 10) + '0');
 	return (count);
 }
+
 int	ft_put_hexdec(unsigned long long nb, int m)
 {
 	char	minh;
 	char	maxh;
 	int		count;
 
-	minh = "0123456789abcdef"[nb%16];//aqui indicamos la posicion dentro del caracter
-	maxh = "0123456789ABCDEF"[nb%16];
+	minh = "0123456789abcdef"[nb % 16];
+	maxh = "0123456789ABCDEF" [nb % 16];
 	count = 0;
 	if (nb >= 16)
-		count += ft_put_hexdec(nb/16, m);
+		count += ft_put_hexdec(nb / 16, m);
 	if (!m)
 		count += ft_putchar(minh);
 	else

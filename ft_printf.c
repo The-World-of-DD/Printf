@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/28 09:24:24 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/28 09:30:15 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 int	ft_printf(char const *s, ...)
 {
-	va_list			args;
-	size_t			i;
-	int	char_count;
+	va_list	args;
+	size_t	i;
+	int		char_count;
 
 	va_start(args, s);
 	i = 0;
 	char_count = 0;
 	while (s[i])
 	{
-		if (s[i] == '%')//aqui identificamos el % antes del identificador
+		if (s[i] == '%')
 		{
 			i++;
 			char_count += ft_aux_01(&s[i], args);
 		}
-		else 
+		else
 			char_count += ft_putchar(s[i]);
 		i++;
 	}
@@ -40,16 +40,16 @@ int	ft_aux_01(const char *s, va_list args)
 {
 	int		char_count;
 	size_t	i;
-	
+
 	i = 0;
 	char_count = 0;
-	if (s[i] == 'c')//caracter
+	if (s[i] == 'c')
 		char_count += ft_putchar_aux(args);
-	else if (s[i] == '%')//caracter %
+	else if (s[i] == '%')
 		char_count += ft_putchar('%');
-	else if (s[i] == 's')//esto es un string
+	else if (s[i] == 's')
 		char_count = ft_putstr_aux(args);
-	else if (s[i] == 'd' || s[i] == 'i'|| s[i] == 'u')//esto es un numero en base decimal
+	else if (s[i] == 'd' || s[i] == 'i' || s[i] == 'u')
 		char_count += ft_putnbr_aux(s, args);
 	else if (s[i] == 'p')
 		char_count += ft_pointer_aux(args);
