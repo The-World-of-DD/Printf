@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/27 21:22:53 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/28 00:45:04 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,78 +16,47 @@ int	ft_printf(char const *s, ...)
 {
 	va_list			args;
 	size_t			i;
-	int				n;
-	char			*str;
-	char			c;
-	unsigned int	np;
-	unsigned long long	lnb;
 	int	char_count;
 
 	va_start(args, s);
 	i = 0;
-	n = 0;
-	str = "";
-	c = 'c';
-	np = 0;
-	lnb = 0;
 	char_count = 0;
 	while (s[i])
 	{
 		if (s[i] == '%')//aqui identificamos el % antes del identificador
 		{
 			i++;
-			if (s[i] == 'c')//caracter
-			{
-				c = va_arg(args, int);
-				char_count += ft_putchar(c);
-			}
-			else if (s[i] == '%')//caracter %
-				char_count += ft_putchar('%');
-			else if (s[i] == 's')//esto es un string
-			{
-				str = va_arg(args, char *);
-				char_count += ft_putstr(str);
-			}
-			else if (s[i] == 'd' || s[i] == 'i')//esto es un numero en base decimal
-			{
-				n = va_arg(args, int);
-				char_count += ft_putnbr(n);
-			}
-			else if (s[i] == 'u')
-			{
-				np = va_arg(args, unsigned int);
-				char_count += ft_put_unsnbr(np);
-			}
-			else if (s[i] == 'p')
-			{
-				lnb = va_arg(args, unsigned long long);
-				if (!lnb)
-					char_count += ft_putstr("(nil)");
-				else
-				{
-					char_count += ft_putstr("0x");
-					char_count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
-				}
-				
-			}
-			else if (s[i] == 'x')
-			{
-				lnb = va_arg(args, unsigned int);
-				char_count += ft_put_hexdec(lnb, 0);//tengo que modificar este valor
-			}
-			else if (s[i] == 'X')
-			{
-				lnb = va_arg(args, unsigned int);
-				char_count += ft_put_hexdec(lnb, 1);//tengo que modificar este valor
-			}
-			else
-				char_count += ft_putstr("(null)");
+			char_count += ft_aux_01(s, args);
 		}
 		else 
 			char_count += ft_putchar(s[i]);
 		i++;
 	}
 	va_end(args);
+	return (char_count);
+}
+
+int	ft_aux_01(const char *s, va_list args)
+{
+	int		char_count;
+	size_t	i;
+	
+	i = 0;
+	char_count = 0;
+	if (s[i] == 'c')//caracter
+		char_count += ft_putchar_aux(s, args);
+	else if (s[i] == '%')//caracter %
+		char_count += ft_putchar('%');
+	else if (s[i] == 's')//esto es un string
+		char_count = ft_putstr_aux(s, args);
+	else if (s[i] == 'd' || s[i] == 'i'|| s[i] == 'u')//esto es un numero en base decimal
+		char_count += ft_putnbr_aux(s, args);
+	else if (s[i] == 'p')
+		char_count += ft_pointer_aux(s, args);
+	else if (s[i] == 'x' || s[i] == 'X')
+		char_count += ft_hexdec_aux(s, args);
+	else
+		char_count += ft_putstr("(null)");
 	return (char_count);
 }
 /*  
