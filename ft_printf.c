@@ -6,7 +6,7 @@
 /*   By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:53:22 by dierojas          #+#    #+#             */
-/*   Updated: 2025/03/28 00:45:04 by dierojas         ###   ########.fr       */
+/*   Updated: 2025/03/28 09:10:16 by dierojas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ int	ft_aux_01(const char *s, va_list args)
 	i = 0;
 	char_count = 0;
 	if (s[i] == 'c')//caracter
-		char_count += ft_putchar_aux(s, args);
+		char_count += ft_putchar_aux(args);
 	else if (s[i] == '%')//caracter %
 		char_count += ft_putchar('%');
 	else if (s[i] == 's')//esto es un string
-		char_count = ft_putstr_aux(s, args);
+		char_count = ft_putstr_aux(args);
 	else if (s[i] == 'd' || s[i] == 'i'|| s[i] == 'u')//esto es un numero en base decimal
 		char_count += ft_putnbr_aux(s, args);
 	else if (s[i] == 'p')
-		char_count += ft_pointer_aux(s, args);
+		char_count += ft_pointer_aux(args);
 	else if (s[i] == 'x' || s[i] == 'X')
 		char_count += ft_hexdec_aux(s, args);
 	else
