@@ -6,14 +6,14 @@
 #    By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/08 20:30:26 by dierojas          #+#    #+#              #
-#    Updated: 2025/03/28 09:34:30 by dierojas         ###   ########.fr        #
+#    Updated: 2025/04/10 10:19:07 by dierojas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SOURCES = ft_printf.c ft_printf_utils.c ft_printf_aux.c
 OBJS = $(SOURCES:.c=.o)
-CC = gcc
+CC = cc
 CCFLAGS = -Wall -Werror -Wextra
 AR = ar
 
