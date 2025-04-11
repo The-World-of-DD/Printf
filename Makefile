@@ -6,7 +6,7 @@
 #    By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/08 20:30:26 by dierojas          #+#    #+#              #
-#    Updated: 2025/04/12 00:00:04 by dierojas         ###   ########.fr        #
+#    Updated: 2025/04/12 00:06:16 by dierojas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,21 @@ CCFLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	cd libft && make $(MAKE)
-	$(CC) $(CCFLAGS) $(OBJS) -L ./libft -lft -o $(NAME)
+	$(MAKE) -C libft
+	mkdir -p tmp_objs
+	cd tmp_objs && ar x ../libft/libft.a
+	ar rcs $@ $^ tmp_objs/*.o
+	rm -rf tmp_objs
 
-clean: 
-	cd libft && $(MAKE) clean
+%.o: %.c
+	$(CC) -c $(CCFLAGS) $< -o $@
+
+clean:
+	$(MAKE) -C libft clean
 	rm -f $(OBJS)
 
 fclean: clean
-	cd libft && $(MAKE) fclean
+	$(MAKE) -C libft fclean
 	rm -f $(NAME)
 
 re: fclean all
