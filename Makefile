@@ -6,7 +6,7 @@
 #    By: dierojas < dierojas@student.42madrid.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/08 20:30:26 by dierojas          #+#    #+#              #
-#    Updated: 2025/04/11 23:52:29 by dierojas         ###   ########.fr        #
+#    Updated: 2025/04/12 00:00:04 by dierojas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	cd libft && make $(MAKE)
-	$(CC) $(CCFLAGS) $(OBJ) -L ./libft -lft -o $(NAME)
+	$(CC) $(CCFLAGS) $(OBJS) -L ./libft -lft -o $(NAME)
 
 clean: 
 	cd libft && $(MAKE) clean
